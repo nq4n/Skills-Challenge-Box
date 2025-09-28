@@ -24,8 +24,11 @@ supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 # --- Data Helpers (Now using Supabase) ---
 def get_user_by_username(username):
     """Fetches a single user from Supabase by their username."""
-    response = supabase.table('users').select("*").eq('username', username).single().execute()
-    return response.data
+    # Use .execute() without .single() to avoid an error if no user is found.
+    response = supabase.table('users').select("*").eq('username', username).execute()
+    if response.data:
+        return response.data[0] # Return the first (and only) user found
+    return None # Return None if no user was found
 
 def get_all_users():
     """Fetches all users from Supabase and returns them as a dictionary."""
