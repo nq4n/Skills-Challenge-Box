@@ -2,10 +2,13 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 import json
 import os
 from datetime import datetime
-from utils.card_generator import batch_generate_cards
+from lib.card_generator import batch_generate_cards
 from supabase import create_client, Client
+from dotenv import load_dotenv
 
 app = Flask(__name__)
+load_dotenv() # Load environment variables from .env file
+
 app.secret_key = "dev-secret-change-me"
 
 # --- Supabase Configuration ---
