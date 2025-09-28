@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 import json
 import os
 from datetime import datetime
-from lib.card_generator import batch_generate_cards
+from utils.card_generator import batch_generate_cards
 from supabase import create_client, Client
 from dotenv import load_dotenv
 
