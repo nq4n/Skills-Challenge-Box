@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="skill-hero card">
+  <div class="icon big">📰</div>
+  <div>
+    <h2>Media Literacy</h2>
+    <p class="muted">Evaluate media and create content responsibly.</p>
+  </div>
+  <div class="spacer"></div>
+  <a class="btn primary" href="{{ url_for('quiz', skill_name='media-literacy', serial=serial) }}">Start Quiz</a>
+</div>
+
+<div class="card">
+  <h3>About this skill</h3>
+  <p>Verify sources, check bias, and share ethically with proper context and credit.</p>
+  <ul class="bullets">
+    <li>Why it matters in jobs: Media literacy helps you navigate information and communicate effectively.</li>
+    <li>How to practice daily: Check sources, question bias, and share content responsibly.</li>
+    <li>Common mistakes to avoid: Sharing misinformation, ignoring context, or failing to credit sources.</li>
+  </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,123 @@
+{
+  "cards": [
+    {
+      "id": "SCB-COM-001-A7B2",
+      "skill_name": "communication",
+      "created_at": "2025-09-28",
+      "holder": null,
+      "scanned_at": null
+    },
+    {
+      "id": "SCB-COL-001-X9Y4",
+      "skill_name": "collaboration",
+      "created_at": "2025-09-28",
+      "holder": null,
+      "scanned_at": null
+    },
+    {
+      "id": "SCB-COM-001-HHIM",
+      "skill_name": "communication",
+      "created_at": "2025-09-28",
+      "holder": null,
+      "scanned_at": null
+    },
+    {
+      "id": "SCB-COM-002-RDMC",
+      "skill_name": "communication",
+      "created_at": "2025-09-28",
+      "holder": null,
+      "scanned_at": null
+    },
+    {
+      "id": "SCB-COM-003-P8L5",
+      "skill_name": "communication",
+      "created_at": "2025-09-28",
+      "holder": null,
+      "scanned_at": null
+    },
+    {
+      "id": "SCB-COM-004-XGZD",
+      "skill_name": "communication",
+      "created_at": "2025-09-28",
+      "holder": null,
+      "scanned_at": null
+    },
+    {
+      "id": "SCB-COM-005-Q78P",
+      "skill_name": "communication",
+      "created_at": "2025-09-28",
+      "holder": null,
+      "scanned_at": null
+    },
+    {
+      "id": "SCB-COM-001-7HIN",
+      "skill_name": "communication",
+      "created_at": "2025-09-28",
+      "holder": null,
+      "scanned_at": null
+    },
+    {
+      "id": "SCB-COM-002-RWY1",
+      "skill_name": "communication",
+      "created_at": "2025-09-28",
+      "holder": null,
+      "scanned_at": null
+    },
+    {
+      "id": "SCB-COM-003-5FFU",
+      "skill_name": "communication",
+      "created_at": "2025-09-28",
+      "holder": null,
+      "scanned_at": null
+    },
+    {
+      "id": "SCB-COM-004-RMVI",
+      "skill_name": "communication",
+      "created_at": "2025-09-28",
+      "holder": null,
+      "scanned_at": null
+    },
+    {
+      "id": "SCB-COM-005-SGID",
+      "skill_name": "communication",
+      "created_at": "2025-09-28",
+      "holder": null,
+      "scanned_at": null
+    },
+    {
+      "id": "SCB-COM-001-JRZV",
+      "skill_name": "communication",
+      "created_at": "2025-09-28",
+      "holder": null,
+      "scanned_at": null
+    },
+    {
+      "id": "SCB-COM-002-H784",
+      "skill_name": "communication",
+      "created_at": "2025-09-28",
+      "holder": null,
+      "scanned_at": null
+    },
+    {
+      "id": "SCB-COM-003-KFON",
+      "skill_name": "communication",
+      "created_at": "2025-09-28",
+      "holder": null,
+      "scanned_at": null
+    },
+    {
+      "id": "SCB-COM-004-X88C",
+      "skill_name": "communication",
+      "created_at": "2025-09-28",
+      "holder": null,
+      "scanned_at": null
+    },
+    {
+      "id": "SCB-COM-005-GPXB",
+      "skill_name": "communication",
+      "created_at": "2025-09-28",
+      "holder": null,
+      "scanned_at": null
+    }
+  ]
+}

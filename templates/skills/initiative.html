@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="skill-hero card">
+  <div class="icon big">🚀</div>
+  <div>
+    <h2>Initiative</h2>
+    <p class="muted">Proactively start tasks and projects.</p>
+  </div>
+  <div class="spacer"></div>
+  <a class="btn primary" href="{{ url_for('quiz', skill_name='initiative', serial=serial) }}">Start Quiz</a>
+</div>
+
+<div class="card">
+  <h3>About this skill</h3>
+  <p>Proactively spot opportunities, start tasks, and communicate progress early.</p>
+  <ul class="bullets">
+    <li>Why it matters in jobs: Initiative helps you stand out and drive projects forward.</li>
+    <li>How to practice daily: Volunteer for new tasks, set goals, and share updates with your team.</li>
+    <li>Common mistakes to avoid: Waiting for instructions or not following up on your work.</li>
+  </ul>
+</div>
+{% endblock %}

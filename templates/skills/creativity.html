@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="skill-content">
+  <div class="skill-hero card">
+    <div class="icon big">🎨</div>
+    <div>
+      <h2>Creativity</h2>
+      <p class="muted">Generate fresh ideas, combine concepts, and turn imagination into useful results.</p>
+    </div>
+    <div class="spacer"></div>
+    <a class="btn primary" href="{{ url_for('quiz', skill_name='creativity') }}">Take Quiz</a>
+  </div>
+
+  <div class="card">
+    <h3>About this skill</h3>
+    <p>Creativity is the ability to produce novel and valuable ideas—solutions, designs, content, or
+       processes. It thrives when curiosity, constraints, and iteration meet.</p>
+    <ul class="bullets">
+      <li><strong>Why it matters in jobs:</strong> Creative thinkers spot opportunities, improve products,
+          and help teams differentiate in crowded markets.</li>
+      <li><strong>Daily practice:</strong> Ask “what if…”, capture ideas quickly, remix existing patterns,
+          and prototype tiny versions to learn fast.</li>
+      <li><strong>Avoid these mistakes:</strong> Waiting for inspiration, editing too early, or assuming
+          the first idea is the best one.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Creative process (loop)</h3>
+    <ol class="bullets">
+      <li><strong>Explore:</strong> Collect inputs—examples, user stories, constraints, and goals.</li>
+      <li><strong>Generate:</strong> Diverge widely. Aim for quantity first, quality later.</li>
+      <li><strong>Select:</strong> Choose promising ideas with simple criteria (impact, effort, delight, risk).</li>
+      <li><strong>Prototype:</strong> Make the smallest artifact that can be tested.</li>
+      <li><strong>Test & Learn:</strong> Get feedback, refine, or combine ideas. Repeat the loop.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h3>Useful techniques</h3>
+    <ul class="bullets">
+      <li><strong>SCAMPER:</strong> Substitute, Combine, Adapt, Modify, Put to other use, Eliminate, Reverse.</li>
+      <li><strong>Crazy 8s:</strong> Sketch 8 variations in 8 minutes to force divergence.</li>
+      <li><strong>Mash-ups:</strong> Blend two unrelated domains (e.g., “podcast × classroom rubric”).</li>
+      <li><strong>Constraints as fuel:</strong> Limit time, budget, or tools to spur inventive approaches.</li>
+      <li><strong>Idea quota:</strong> Set a target (e.g., 25 ideas) before judging any of them.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Real-world examples</h3>
+    <ul class="bullets">
+      <li><strong>Product:</strong> Users struggle with long forms → turn steps into a chat-like flow → completion rate rises.</li>
+      <li><strong>Teaching:</strong> Dry topic → add role-play and quick polls → higher engagement and recall.</li>
+      <li><strong>Operations:</strong> Packaging waste → switch to returnable inserts → cost drops and brand image improves.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Practice now (10 minutes)</h3>
+    <ol class="bullets">
+      <li>Pick a routine task you do weekly.</li>
+      <li>Write the goal and 3 constraints (time, tools, budget).</li>
+      <li>Run SCAMPER on it and list at least 12 ideas.</li>
+      <li>Choose one low-effort idea and build a 5-minute prototype or sketch.</li>
+      <li>Share with one person and note a single improvement.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h3>Signals employers look for</h3>
+    <ul class="bullets">
+      <li>Idea fluency (many options) and flexibility (different categories of ideas).</li>
+      <li>Clear rationales: why this concept, for whom, and how it meets constraints.</li>
+      <li>Comfort with rough prototypes and rapid feedback cycles.</li>
+      <li>Ability to remix others’ ideas and co-create without ego.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Common pitfalls & how to fix them</h3>
+    <ul class="bullets">
+      <li><strong>Premature critique:</strong> Separate idea generation (no judgment) from selection.</li>
+      <li><strong>Blank page:</strong> Start from references and constraints; use prompts like SCAMPER.</li>
+      <li><strong>Perfectionism:</strong> Ship a small prototype first; polish after real feedback.</li>
+      <li><strong>Idea hoarding:</strong> Share early to attract collaborators and better inputs.</li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

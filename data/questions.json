@@ -1,0 +1,662 @@
+{
+  "problem-solving": {
+    "name": "Problem Solving",
+    "description": "Test your problem-solving abilities and methodologies",
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is the first step in effective problem solving?",
+        "options": [
+          "Implement a solution immediately",
+          "Define the problem clearly",
+          "Blame someone for the problem",
+          "Ignore the problem"
+        ],
+        "correct": 1,
+        "explanation": "Clearly defining the problem helps ensure you understand what needs to be solved before taking action."
+      },
+      {
+        "id": 2,
+        "question": "Which technique helps find the root cause of a problem?",
+        "options": [
+          "Random guessing",
+          "Asking 'Why?' once",
+          "The 5 Whys technique",
+          "Implementing the first solution"
+        ],
+        "correct": 2,
+        "explanation": "The 5 Whys technique involves asking 'why' multiple times to drill down to the root cause."
+      },
+      {
+        "id": 3,
+        "question": "What should you do before implementing a solution?",
+        "options": [
+          "Skip testing completely",
+          "Test on a large scale immediately",
+          "Run a small, low-risk pilot",
+          "Implement without planning"
+        ],
+        "correct": 2,
+        "explanation": "Testing solutions on a small scale helps identify potential issues before full implementation."
+      },
+      {
+        "id": 4,
+        "question": "What is the Pareto 80/20 principle in problem solving?",
+        "options": [
+          "Solve 20% of problems and ignore 80%",
+          "Focus on the few causes that create most of the effect",
+          "Take 80% more time than planned",
+          "Use 20% of available resources"
+        ],
+        "correct": 1,
+        "explanation": "The 80/20 rule suggests that 80% of problems come from 20% of causes."
+      },
+      {
+        "id": 5,
+        "question": "What is important to do after implementing a solution?",
+        "options": [
+          "Forget about the problem",
+          "Review and measure the results",
+          "Start a new problem immediately",
+          "Hide any negative outcomes"
+        ],
+        "correct": 1,
+        "explanation": "Measuring results helps verify the solution's effectiveness and identify any needed adjustments."
+      }
+    ]
+  },
+  "communication": {
+    "name": "Communication",
+    "description": "Test your communication skills and understanding",
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is active listening?",
+        "options": [
+          "Waiting for your turn to speak",
+          "Engaging fully with the speaker and showing understanding",
+          "Taking notes while someone speaks",
+          "Thinking about your response while others talk"
+        ],
+        "correct": 1,
+        "explanation": "Active listening involves fully engaging with the speaker and demonstrating understanding."
+      },
+      {
+        "id": 2,
+        "question": "Which of these is a barrier to effective communication?",
+        "options": [
+          "Making eye contact",
+          "Using clear language",
+          "Making assumptions about the listener's knowledge",
+          "Asking for clarification"
+        ],
+        "correct": 2,
+        "explanation": "Assumptions can lead to misunderstandings and communication breakdowns."
+      },
+      {
+        "id": 3,
+        "question": "What is the best way to handle disagreements in communication?",
+        "options": [
+          "Avoid the conflict completely",
+          "Listen to understand, then express your view respectfully",
+          "Insist on your point until others agree",
+          "Change the subject quickly"
+        ],
+        "correct": 1,
+        "explanation": "Understanding others' viewpoints before expressing yours leads to more productive discussions."
+      },
+      {
+        "id": 4,
+        "question": "Which nonverbal cue can help improve communication?",
+        "options": [
+          "Crossing your arms",
+          "Looking at your phone",
+          "Maintaining appropriate eye contact",
+          "Fidgeting constantly"
+        ],
+        "correct": 2,
+        "explanation": "Appropriate eye contact shows engagement and respect in communication."
+      },
+      {
+        "id": 5,
+        "question": "What is the best approach when giving feedback?",
+        "options": [
+          "Be as vague as possible",
+          "Focus only on negatives",
+          "Be specific and constructive",
+          "Avoid giving feedback altogether"
+        ],
+        "correct": 2,
+        "explanation": "Specific and constructive feedback helps others understand and improve."
+      }
+    ]
+  },
+  "collaboration": {
+    "name": "Collaboration",
+    "description": "Test your ability to work effectively with others",
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is essential for successful team collaboration?",
+        "options": [
+          "Working independently all the time",
+          "Clear communication and shared goals",
+          "Competing with team members",
+          "Keeping information to yourself"
+        ],
+        "correct": 1,
+        "explanation": "Clear communication and shared goals ensure everyone works towards the same objectives."
+      },
+      {
+        "id": 2,
+        "question": "How should you handle conflicts in a team?",
+        "options": [
+          "Ignore them and hope they go away",
+          "Take sides immediately",
+          "Address them professionally and find common ground",
+          "Let them escalate"
+        ],
+        "correct": 2,
+        "explanation": "Addressing conflicts professionally helps maintain team harmony and productivity."
+      },
+      {
+        "id": 3,
+        "question": "What is the best way to contribute to team meetings?",
+        "options": [
+          "Stay silent throughout",
+          "Share ideas and listen to others' perspectives",
+          "Dominate the conversation",
+          "Arrive unprepared"
+        ],
+        "correct": 1,
+        "explanation": "Balanced participation involves both sharing ideas and listening to others."
+      },
+      {
+        "id": 4,
+        "question": "Which practice promotes effective collaboration?",
+        "options": [
+          "Working in isolation",
+          "Blaming others for mistakes",
+          "Regular communication and updates",
+          "Avoiding team meetings"
+        ],
+        "correct": 2,
+        "explanation": "Regular communication keeps everyone informed and aligned."
+      },
+      {
+        "id": 5,
+        "question": "What is important when receiving feedback from team members?",
+        "options": [
+          "Defend yourself immediately",
+          "Ignore it completely",
+          "Consider it objectively and learn from it",
+          "Take it personally"
+        ],
+        "correct": 2,
+        "explanation": "Viewing feedback objectively helps personal and team growth."
+      }
+    ]
+  },
+  "critical-thinking": {
+    "name": "Critical Thinking",
+    "description": "Test your analytical and critical thinking abilities",
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is the first step in critical thinking?",
+        "options": [
+          "Making quick decisions",
+          "Identifying and analyzing available information",
+          "Following your instincts",
+          "Accepting all information as true"
+        ],
+        "correct": 1,
+        "explanation": "Analyzing available information helps form a solid foundation for critical thinking."
+      },
+      {
+        "id": 2,
+        "question": "Which approach best demonstrates critical thinking?",
+        "options": [
+          "Accepting information without questioning",
+          "Following popular opinion",
+          "Evaluating evidence and questioning assumptions",
+          "Making quick judgments"
+        ],
+        "correct": 2,
+        "explanation": "Critical thinking involves questioning assumptions and evaluating evidence."
+      },
+      {
+        "id": 3,
+        "question": "What is confirmation bias?",
+        "options": [
+          "Seeking information that supports existing beliefs",
+          "Changing opinions frequently",
+          "Analyzing all available evidence",
+          "Making objective decisions"
+        ],
+        "correct": 0,
+        "explanation": "Confirmation bias involves favoring information that confirms existing beliefs."
+      },
+      {
+        "id": 4,
+        "question": "Which skill is most important for critical thinking?",
+        "options": [
+          "Quick decision making",
+          "Following instructions exactly",
+          "Analytical reasoning",
+          "Memorization"
+        ],
+        "correct": 2,
+        "explanation": "Analytical reasoning helps evaluate situations and make informed decisions."
+      },
+      {
+        "id": 5,
+        "question": "What should you do when faced with conflicting information?",
+        "options": [
+          "Accept the most recent information",
+          "Evaluate sources and evidence carefully",
+          "Ignore all conflicting information",
+          "Choose the easiest explanation"
+        ],
+        "correct": 1,
+        "explanation": "Carefully evaluating sources helps resolve conflicts and find truth."
+      }
+    ]
+  },
+  "creativity": {
+    "name": "Creativity",
+    "description": "Test your creative thinking and innovation skills",
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is brainstorming?",
+        "options": [
+          "Working alone on ideas",
+          "Criticizing others' ideas",
+          "Generating many ideas without judgment",
+          "Following established procedures"
+        ],
+        "correct": 2,
+        "explanation": "Brainstorming involves generating many ideas freely without immediate judgment."
+      },
+      {
+        "id": 2,
+        "question": "Which approach enhances creativity?",
+        "options": [
+          "Sticking to familiar solutions",
+          "Looking at problems from different perspectives",
+          "Avoiding new experiences",
+          "Following rules strictly"
+        ],
+        "correct": 1,
+        "explanation": "Different perspectives lead to novel solutions and creative insights."
+      },
+      {
+        "id": 3,
+        "question": "What role does failure play in creativity?",
+        "options": [
+          "It should be avoided at all costs",
+          "It's a natural part of the creative process",
+          "It means you're not creative",
+          "It ends the creative process"
+        ],
+        "correct": 1,
+        "explanation": "Failure is a natural part of creativity and can lead to better solutions."
+      },
+      {
+        "id": 4,
+        "question": "How can you overcome creative blocks?",
+        "options": [
+          "Give up and wait for inspiration",
+          "Stick to what you know",
+          "Try different approaches and take breaks",
+          "Force yourself to continue working"
+        ],
+        "correct": 2,
+        "explanation": "Varying approaches and taking breaks can help overcome creative blocks."
+      },
+      {
+        "id": 5,
+        "question": "What is divergent thinking?",
+        "options": [
+          "Following established patterns",
+          "Generating multiple unique solutions",
+          "Avoiding creative tasks",
+          "Using only proven methods"
+        ],
+        "correct": 1,
+        "explanation": "Divergent thinking involves generating multiple unique solutions to problems."
+      }
+    ]
+  },
+  "adaptability": {
+    "name": "Adaptability",
+    "description": "Test your ability to adapt to change and handle new situations",
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is the best approach when facing unexpected changes?",
+        "options": [
+          "Resist the change completely",
+          "Stay flexible and open-minded",
+          "Ignore the changes",
+          "Complain about the situation"
+        ],
+        "correct": 1,
+        "explanation": "Being flexible and open-minded helps you adjust to new situations effectively."
+      },
+      {
+        "id": 2,
+        "question": "How can you best develop adaptability?",
+        "options": [
+          "Avoid new experiences",
+          "Stick to familiar routines",
+          "Try new things regularly",
+          "Wait for changes to happen"
+        ],
+        "correct": 2,
+        "explanation": "Regular exposure to new experiences helps build adaptability skills."
+      },
+      {
+        "id": 3,
+        "question": "What is an important trait of adaptable people?",
+        "options": [
+          "They never change their mind",
+          "They avoid feedback",
+          "They learn from experience",
+          "They resist new technology"
+        ],
+        "correct": 2,
+        "explanation": "Learning from experience is crucial for developing adaptability."
+      },
+      {
+        "id": 4,
+        "question": "When facing a new challenge, what should you do first?",
+        "options": [
+          "Assess the situation calmly",
+          "Panic and stress out",
+          "Avoid the challenge",
+          "Blame others"
+        ],
+        "correct": 0,
+        "explanation": "Calm assessment helps you understand and adapt to new situations effectively."
+      },
+      {
+        "id": 5,
+        "question": "What helps build resilience in adapting to change?",
+        "options": [
+          "Avoiding all challenges",
+          "Maintaining a positive attitude",
+          "Complaining frequently",
+          "Refusing to change"
+        ],
+        "correct": 1,
+        "explanation": "A positive attitude helps build resilience and makes adaptation easier."
+      }
+    ]
+  },
+  "digital-literacy": {
+    "name": "Digital Literacy",
+    "description": "Test your understanding of digital tools and technologies",
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is the most important aspect of online security?",
+        "options": [
+          "Using the same password everywhere",
+          "Sharing passwords with friends",
+          "Using strong, unique passwords",
+          "Never changing passwords"
+        ],
+        "correct": 2,
+        "explanation": "Strong, unique passwords are essential for protecting online accounts."
+      },
+      {
+        "id": 2,
+        "question": "What is 'phishing'?",
+        "options": [
+          "A computer game",
+          "A type of online fraud",
+          "A social media platform",
+          "A file format"
+        ],
+        "correct": 1,
+        "explanation": "Phishing is a type of online fraud that tries to steal personal information."
+      },
+      {
+        "id": 3,
+        "question": "What is cloud storage?",
+        "options": [
+          "Weather forecasting",
+          "Physical hard drives",
+          "Online file storage",
+          "Computer memory"
+        ],
+        "correct": 2,
+        "explanation": "Cloud storage allows you to store files online and access them from anywhere."
+      },
+      {
+        "id": 4,
+        "question": "What is the purpose of two-factor authentication?",
+        "options": [
+          "Make login slower",
+          "Share passwords easily",
+          "Add extra security",
+          "Save passwords"
+        ],
+        "correct": 2,
+        "explanation": "Two-factor authentication adds an extra layer of security to your accounts."
+      },
+      {
+        "id": 5,
+        "question": "Which is a good practice for digital citizenship?",
+        "options": [
+          "Sharing fake news",
+          "Respecting others online",
+          "Cyberbullying",
+          "Ignoring privacy"
+        ],
+        "correct": 1,
+        "explanation": "Respecting others online is a key aspect of good digital citizenship."
+      }
+    ]
+  },
+  "initiative": {
+    "name": "Initiative",
+    "description": "Test your ability to take action and lead change",
+    "questions": [
+      {
+        "id": 1,
+        "question": "What characterizes someone who shows initiative?",
+        "options": [
+          "Waiting for instructions",
+          "Taking action proactively",
+          "Avoiding responsibility",
+          "Following others"
+        ],
+        "correct": 1,
+        "explanation": "Taking proactive action is a key characteristic of showing initiative."
+      },
+      {
+        "id": 2,
+        "question": "How can you demonstrate initiative at work?",
+        "options": [
+          "Wait for assignments",
+          "Avoid challenges",
+          "Volunteer for projects",
+          "Stay quiet"
+        ],
+        "correct": 2,
+        "explanation": "Volunteering for projects shows initiative and willingness to contribute."
+      },
+      {
+        "id": 3,
+        "question": "What is the best way to handle a new opportunity?",
+        "options": [
+          "Ignore it",
+          "Wait for others",
+          "Seize it immediately",
+          "Complain about it"
+        ],
+        "correct": 2,
+        "explanation": "Taking advantage of opportunities shows initiative and drive."
+      },
+      {
+        "id": 4,
+        "question": "What role does initiative play in problem-solving?",
+        "options": [
+          "No role at all",
+          "Delays solutions",
+          "Identifies problems early",
+          "Creates problems"
+        ],
+        "correct": 2,
+        "explanation": "Initiative helps identify and address problems before they escalate."
+      },
+      {
+        "id": 5,
+        "question": "How does initiative impact career growth?",
+        "options": [
+          "No impact",
+          "Slows progress",
+          "Accelerates advancement",
+          "Creates problems"
+        ],
+        "correct": 2,
+        "explanation": "Taking initiative often leads to increased responsibilities and career advancement."
+      }
+    ]
+  },
+  "leadership": {
+    "name": "Leadership",
+    "description": "Test your understanding of effective leadership principles",
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is a key characteristic of good leadership?",
+        "options": [
+          "Avoiding decisions",
+          "Leading by example",
+          "Ignoring feedback",
+          "Micromanaging"
+        ],
+        "correct": 1,
+        "explanation": "Leading by example inspires and motivates team members."
+      },
+      {
+        "id": 2,
+        "question": "How should a leader handle team conflicts?",
+        "options": [
+          "Ignore them",
+          "Take sides",
+          "Address them fairly",
+          "Avoid involvement"
+        ],
+        "correct": 2,
+        "explanation": "Good leaders address conflicts fairly and professionally."
+      },
+      {
+        "id": 3,
+        "question": "What is important for motivating team members?",
+        "options": [
+          "Criticism only",
+          "Ignoring achievements",
+          "Regular recognition",
+          "Strict rules"
+        ],
+        "correct": 2,
+        "explanation": "Regular recognition of achievements helps motivate team members."
+      },
+      {
+        "id": 4,
+        "question": "How should leaders communicate vision?",
+        "options": [
+          "Keep it secret",
+          "Share it clearly",
+          "Change it often",
+          "Ignore it"
+        ],
+        "correct": 1,
+        "explanation": "Clear communication of vision helps align team efforts."
+      },
+      {
+        "id": 5,
+        "question": "What is servant leadership?",
+        "options": [
+          "Being weak",
+          "Supporting team growth",
+          "Avoiding responsibility",
+          "Strict control"
+        ],
+        "correct": 1,
+        "explanation": "Servant leadership focuses on supporting and developing team members."
+      }
+    ]
+  },
+  "media-literacy": {
+    "name": "Media Literacy",
+    "description": "Test your ability to analyze and evaluate media content",
+    "questions": [
+      {
+        "id": 1,
+        "question": "What is the first step in evaluating news sources?",
+        "options": [
+          "Share immediately",
+          "Check the source",
+          "Believe everything",
+          "Ignore dates"
+        ],
+        "correct": 1,
+        "explanation": "Checking the source's credibility is crucial for evaluating news."
+      },
+      {
+        "id": 2,
+        "question": "How can you identify fake news?",
+        "options": [
+          "Accept all news",
+          "Check multiple sources",
+          "Ignore fact-checking",
+          "Share quickly"
+        ],
+        "correct": 1,
+        "explanation": "Cross-checking multiple sources helps verify information."
+      },
+      {
+        "id": 3,
+        "question": "What is media bias?",
+        "options": [
+          "Accurate reporting",
+          "Neutral viewpoint",
+          "Favoring perspectives",
+          "Random facts"
+        ],
+        "correct": 2,
+        "explanation": "Media bias involves favoring certain perspectives in reporting."
+      },
+      {
+        "id": 4,
+        "question": "Why is fact-checking important?",
+        "options": [
+          "It isn't important",
+          "Wastes time",
+          "Ensures accuracy",
+          "Creates confusion"
+        ],
+        "correct": 2,
+        "explanation": "Fact-checking helps maintain information accuracy and reliability."
+      },
+      {
+        "id": 5,
+        "question": "What role do social media algorithms play?",
+        "options": [
+          "No role",
+          "Show random content",
+          "Personalize content",
+          "Block all content"
+        ],
+        "correct": 2,
+        "explanation": "Algorithms personalize content based on user preferences and behavior."
+      }
+    ]
+  }
+}

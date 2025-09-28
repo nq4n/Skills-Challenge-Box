@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="skill-content">
+  <div class="quiz-container">
+    <div class="card">
+      <h2>{{ skill_title }} Quiz</h2>
+      <p>{{ description }}</p>
+      <p class="muted">Answer all questions to test your knowledge. You need 70% to pass and earn 20 points!</p>
+    </div>
+
+  <form id="quizForm" class="quiz">
+    {% for question in questions %}
+    <div class="card q-block" id="question-{{ loop.index }}">
+      <h4>Question {{ loop.index }}:</h4>
+      <p>{{ question.question }}</p>
+      
+      {% for option in question.options %}
+      <label class="opt">
+        <input type="radio" name="q{{ loop.index0 }}" value="{{ loop.index0 }}" required>
+        <span>{{ option }}</span>
+      </label>
+      {% endfor %}
+      
+      <div class="explanation" style="display: none; margin-top: 1rem; padding: 1rem; background: #f0f9ff; border-radius: 0.5rem;">
+        <p><strong>Explanation:</strong> {{ question.explanation }}</p>
+      </div>
+    </div>
+    {% endfor %}
+    
+    <div class="quiz-actions">
+      <button type="submit" class="btn primary">Submit Quiz</button>
+    </div>
+  </form>
+
+  <div id="quizResult" style="display: none;" class="card result">
+    <div class="icon big"></div>
+    <div>
+      <h3 id="resultTitle"></h3>
+      <p id="resultDetails"></p>
+      <p class="muted" id="resultMessage"></p>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+document.getElementById('quizForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  // Collect answers
+  const answers = {};
+  const questionCount = "{{ questions|length }}" * 1; // Convert to number
+  for(let i = 0; i < questionCount; i++) {
+    const selected = document.querySelector(`input[name="q${i}"]:checked`);
+    if(selected) {
+      answers[i] = parseInt(selected.value);
+    }
+  }
+  
+  // Submit answers
+  try {
+    const response = await fetch(`/submit_quiz/{{ skill_name }}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ answers })
+    });
+    
+    const result = await response.json();
+    
+    // Show results
+    const resultEl = document.getElementById('quizResult');
+    const titleEl = document.getElementById('resultTitle');
+    const detailsEl = document.getElementById('resultDetails');
+    
+    resultEl.style.display = 'flex';
+    resultEl.className = `card result ${result.passed ? 'pass' : 'fail'}`;
+    
+    if(result.passed) {
+      titleEl.textContent = '🎉 Quiz Passed!';
+      detailsEl.textContent = `You scored ${result.score}/${result.total} (${Math.round(result.percentage)}%). You earned ${result.points_earned} points!`;
+    } else {
+      titleEl.textContent = '😕 Quiz Not Passed';
+      detailsEl.textContent = `You scored ${result.score}/${result.total} (${Math.round(result.percentage)}%). You need 70% to pass. Try again!`;
+    }
+    
+    // Disable form
+    document.querySelectorAll('#quizForm input').forEach(input => input.disabled = true);
+    document.querySelector('#quizForm button').disabled = true;
+    
+  } catch(err) {
+    console.error('Error submitting quiz:', err);
+    alert('Error submitting quiz. Please try again.');
+  }
+});
+</script>
+{% endblock %}

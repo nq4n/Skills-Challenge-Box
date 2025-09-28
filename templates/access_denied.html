@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <div class="card error-card">
+        <div class="error-icon">🔒</div>
+        <h2>Access Restricted</h2>
+        <p>You don't have access to the {{ skill_title }} skill content yet.</p>
+        <div class="instruction">
+            <p>To access this skill, you need to:</p>
+            <ol>
+                <li>Scan a valid QR code for this skill</li>
+                <li>Complete any prerequisites</li>
+            </ol>
+        </div>
+        <div class="actions">
+            <a href="{{ url_for('student_dashboard') }}" class="btn primary">Return to Dashboard</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

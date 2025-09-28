@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="skill-hero card">
+  <div class="icon big">💻</div>
+  <div>
+    <h2>Digital Literacy</h2>
+    <p class="muted">Use digital tools safely and effectively.</p>
+  </div>
+  <div class="spacer"></div>
+  <a class="btn primary" href="{{ url_for('quiz', skill_name='digital-literacy', serial=serial) }}">Start Quiz</a>
+</div>
+
+<div class="card">
+  <h3>About this skill</h3>
+  <p>Use tools safely, protect data, and collaborate effectively online.</p>
+  <ul class="bullets">
+    <li>Why it matters in jobs: Digital literacy is essential for most modern workplaces and remote collaboration.</li>
+    <li>How to practice daily: Learn new apps, protect your privacy, and share files securely.</li>
+    <li>Common mistakes to avoid: Using weak passwords, ignoring security updates, or misusing digital tools.</li>
+  </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skills Challenge Box</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-container">
+      <div class="nav-left">
+        <a class="brand" href="{{ url_for('student_dashboard') if session.get('role') == 'student' else url_for('admin_dashboard') if session.get('role') == 'admin' else url_for('index') }}">
+          <span class="brand-icon">🎯</span>
+          <span class="brand-text">Skills Challenge Box</span>
+        </a>
+      </div>
+      <div class="nav-right">
+        {% if session.get('user') %}
+          <span class="user-info">{{ session.get('user') }}</span>
+          <a href="{{ url_for('logout') }}" class="logout-btn">
+            <span class="logout-text">Logout</span>
+            <span class="logout-icon">→</span>
+          </a>
+        {% else %}
+          <a href="/" class="login-link">Login</a>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+  {% block content %}{% endblock %}
+</body>
+</html>

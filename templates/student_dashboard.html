@@ -1,0 +1,303 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-5">
+  <div class="page-header">
+    <h2>Student Dashboard</h2>
+  <div class="muted">Welcome, {{ user or "student" }} — demo only.</div>
+  </div>
+
+  <!-- KPI cards -->
+  <div class="cards-row">
+    <div class="card kpi">
+      <div class="kpi-value" id="points">{{ points or 0 }}</div>
+      <div class="kpi-label">Points</div>
+    </div>
+    <div class="card kpi">
+      <div class="kpi-value" id="badges">{{ badges or 0 }}</div>
+      <div class="kpi-label">Badges</div>
+      {% if badges > 0 %}
+      <div class="badge-tooltip">
+        {% for badge in user_badges %}
+        <div class="badge">{{ badge }}</div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    <div class="card kpi">
+      <div class="kpi-value" id="streak">{{ streak or 0 }}</div>
+      <div class="kpi-label">Day Streak</div>
+      {% if streak > 0 %}
+      <div class="streak-info">Keep visiting daily to maintain your streak!</div>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Skills grid -->
+  <h3 class="section-title">Your Skills</h3>
+  <div class="grid skills">
+    {% for s in skills %}
+      {% set progress = skill_progress.get(s.code, {}) %}
+      <div class="card skill-card {% if progress.get('scanned') %}unlocked{% endif %}">
+        <div class="icon">{{ s.icon }}</div>
+        <div class="title">{{ s.title }}</div>
+        <div class="desc">{{ s.desc }}</div>
+        
+        <!-- Progress Bar -->
+        <div class="skill-progress">
+          <div class="progress-step {% if progress.get('scanned') %}complete{% endif %}" title="Scan QR">
+            <span class="icon">📱</span>
+            <span class="label">Scanned</span>
+          </div>
+          <div class="progress-step {% if progress.get('read') %}complete{% endif %}" title="Read Content">
+            <span class="icon">📖</span>
+            <span class="label">Read</span>
+          </div>
+          <div class="progress-step {% if progress.get('quiz_taken') %}complete{% endif %}" title="Take Quiz">
+            <span class="icon">✓</span>
+            <span class="label">Quiz</span>
+          </div>
+        </div>
+
+        <div class="skill-actions">
+          {% if progress.get('scanned') %}
+            <a class="btn small primary" href="{{ url_for('student_skill', skill_name=s.code) }}">Open Skill</a>
+            {% if not progress.get('quiz_taken') %}
+              <a class="btn small ghost" href="{{ url_for('quiz', skill_name=s.code) }}">Take Quiz</a>
+            {% endif %}
+          {% else %}
+            <div class="scan-prompt">Scan QR code to unlock this skill</div>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <style>
+    .skill-card {
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .skill-card.unlocked {
+      border-color: #4CAF50;
+    }
+    
+    .skill-progress {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0;
+      padding: 5px;
+      background: rgba(0,0,0,0.05);
+      border-radius: 8px;
+    }
+    
+    .progress-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      padding: 5px;
+      opacity: 0.5;
+      transition: all 0.3s ease;
+    }
+    
+    .progress-step.complete {
+      opacity: 1;
+      color: #4CAF50;
+    }
+    
+    .progress-step .icon {
+      font-size: 1.2em;
+      margin-bottom: 2px;
+    }
+    
+    .progress-step .label {
+      font-size: 0.8em;
+    }
+    
+    .scan-prompt {
+      text-align: center;
+      color: #666;
+      font-size: 0.9em;
+      padding: 10px;
+      background: rgba(0,0,0,0.05);
+      border-radius: 4px;
+    }
+  </style>
+
+  <!-- Scanned skills list -->
+  <h4 class="mt-4">Your Scanned Skills:</h4>
+  <ul>
+    {% if scanned_skills and scanned_skills|length > 0 %}
+      {% for item in scanned_skills %}
+        <li>
+          {% if item.skill_code %}
+            <a href="{{ url_for('student_skill', skill_name=item.skill_code) }}">{{ item.title }}</a>
+            <span class="mono">&nbsp;({{ item.serial }})</span>
+            {% if item.scanned_at %}<small class="muted"> scanned at {{ item.scanned_at }}</small>{% endif %}
+          {% else %}
+            {{ item.title }} <span class="mono">({{ item.serial }})</span>
+          {% endif %}
+        </li>
+      {% endfor %}
+    {% else %}
+      <li>No skills scanned yet.</li>
+    {% endif %}
+  </ul>
+
+  <hr>
+
+  <!-- QR placeholder -->
+  <h4>Scan QR Code</h4>
+  <div id="qr-reader-wrap" style="max-width:420px;margin:0 auto;">
+    <video id="qr-video" style="width:100%;border-radius:12px;box-shadow:0 2px 12px rgba(34,211,238,0.10);background:#181e3a" playsinline></video>
+    <div id="qr-result" class="toast info" style="margin-top:12px;text-align:center;display:none;"></div>
+    <button id="start-qr-btn" class="btn primary" style="width:100%;margin-top:10px;">Start QR Scan</button>
+    <button id="stop-qr-btn" class="btn ghost" style="width:100%;margin-top:8px;display:none;">Stop Scan</button>
+  </div>
+  <script src="/static/js/qr-scanner.umd.min.js"></script>
+  <script src="/static/js/app.js"></script>
+  <script>
+    let qrScanner, scanning = false;
+    const video = document.getElementById('qr-video');
+    const resultDiv = document.getElementById('qr-result');
+    // Allowed skill codes (from server-side SKILLS)
+    const ALLOWED_SKILLS = JSON.parse('{{ skills | map(attribute='code') | list | tojson | safe }}');
+    function showToast(msg, kind='info'){
+      resultDiv.textContent = msg;
+      resultDiv.className = 'toast ' + (kind === 'error' ? 'error' : (kind === 'success' ? 'success' : 'info'));
+      resultDiv.style.display = 'block';
+    }
+    const startBtn = document.getElementById('start-qr-btn');
+    const stopBtn = document.getElementById('stop-qr-btn');
+    const scannedList = document.querySelector('ul');
+    startBtn.onclick = function() {
+      if (scanning) return;
+      qrScanner = new QrScanner(video, result => {
+        // Try to parse skill_name and serial from QR code value
+        // If QR code is a full URL that points to this app (same origin),
+        // extract skill and serial and validate via the backend instead of
+        // redirecting directly. External URLs still redirect.
+        let skillName = null, serial = null;
+        if (result.startsWith('http')) {
+          try {
+            const parsed = new URL(result);
+            if (parsed.origin === window.location.origin) {
+              const parts = parsed.pathname.split('/').filter(Boolean);
+              // expecting /skill/<skill_name> or /skill/<skill_name>/<serial>
+              if (parts[0] === 'skill') {
+                skillName = parts[1] || null;
+                serial = parts[2] || null;
+                // Only accept if skillName is one of allowed skills
+                if (!skillName || ALLOWED_SKILLS.indexOf(skillName) === -1) {
+                  showToast('Scanned skill is not recognized by this app.', 'error');
+                  qrScanner.stop(); scanning = false;
+                  startBtn.style.display = '';
+                  stopBtn.style.display = 'none';
+                  return;
+                }
+              } else {
+                // Not a skill URL on this app -> reject
+                showToast('This QR code is not for this app.', 'error');
+                qrScanner.stop(); scanning = false;
+                startBtn.style.display = '';
+                stopBtn.style.display = 'none';
+                return;
+              }
+            } else {
+              // External URL, reject rather than follow
+              showToast('External links are not accepted. Scan a Skills Challenge QR.', 'error');
+              qrScanner.stop(); scanning = false;
+              startBtn.style.display = '';
+              stopBtn.style.display = 'none';
+              return;
+            }
+          } catch (e) {
+            // malformed URL, treat as plain text below
+            skillName = null; serial = null;
+          }
+        }
+
+        // If we didn't get a skill/serial from a URL, parse plain payloads
+        if (!skillName && !serial) {
+          if (result.includes('|')) {
+            [skillName, serial] = result.split('|');
+          } else if (result.includes('-')) {
+            // Assume first part is skill, rest is serial
+            let parts = result.split('-');
+            skillName = parts[0];
+            serial = parts.slice(1).join('-');
+          } else {
+            // Fallback: treat whole result as serial-only -> reject
+            showToast('QR code must include a skill identifier.', 'error');
+            qrScanner.stop(); scanning = false;
+            startBtn.style.display = '';
+            stopBtn.style.display = 'none';
+            return;
+          }
+          // Validate skillName against allowed list
+          if (!ALLOWED_SKILLS.includes(skillName)) {
+            showToast('Scanned skill is not recognized.', 'error');
+            qrScanner.stop(); scanning = false;
+            startBtn.style.display = '';
+            stopBtn.style.display = 'none';
+            return;
+          }
+        }
+
+        // If there's no serial, simply open the skill view page
+        if (!serial) {
+          window.location.href = `/skill/${encodeURIComponent(skillName)}`;
+          qrScanner.stop(); scanning = false;
+          startBtn.style.display = '';
+          stopBtn.style.display = 'none';
+          return;
+        }
+
+        // Before redirecting, validate & claim the card with backend
+        fetch(`/api/validate_card?skill=${encodeURIComponent(skillName)}&serial=${encodeURIComponent(serial)}`)
+          .then(r => r.json())
+          .then(j => {
+            if (j.status === 'ok') {
+              resultDiv.textContent = j.message;
+              resultDiv.className = 'toast success';
+              resultDiv.style.display = 'block';
+              // Use the server-provided redirect URL (no serial in path)
+              setTimeout(() => { window.location.href = j.redirect || (`/skill/${j.skill}`); }, 700);
+            } else if (j.status === 'already_scanned' || j.status === 'claimed') {
+              resultDiv.textContent = j.message;
+              resultDiv.className = 'toast error';
+              resultDiv.style.display = 'block';
+            } else {
+              resultDiv.textContent = j.message || 'Invalid QR code.';
+              resultDiv.className = 'toast error';
+              resultDiv.style.display = 'block';
+            }
+          }).catch(err => {
+            resultDiv.textContent = 'Server error validating QR code.';
+            resultDiv.className = 'toast error';
+            resultDiv.style.display = 'block';
+          });
+
+        qrScanner.stop();
+        scanning = false;
+        startBtn.style.display = '';
+        stopBtn.style.display = 'none';
+      });
+      qrScanner.start();
+      scanning = true;
+      startBtn.style.display = 'none';
+      stopBtn.style.display = '';
+      resultDiv.style.display = 'none';
+    };
+    stopBtn.onclick = function() {
+      if (qrScanner) qrScanner.stop();
+      scanning = false;
+      startBtn.style.display = '';
+      stopBtn.style.display = 'none';
+    };
+  </script>
+</div>
+
+{% endblock %}

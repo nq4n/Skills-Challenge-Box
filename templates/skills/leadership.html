@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="skill-hero card">
+  <div class="icon big">🏅</div>
+  <div>
+    <h2>Leadership</h2>
+    <p class="muted">Guide others and take responsibility.</p>
+  </div>
+  <div class="spacer"></div>
+  <a class="btn primary" href="{{ url_for('quiz', skill_name='leadership', serial=serial) }}">Start Quiz</a>
+</div>
+
+<div class="card">
+  <h3>About this skill</h3>
+  <p>Set direction, support the team, and model integrity and accountability.</p>
+  <ul class="bullets">
+    <li>Why it matters in jobs: Leadership inspires teams and ensures projects succeed.</li>
+    <li>How to practice daily: Take responsibility, help others, and communicate a clear vision.</li>
+    <li>Common mistakes to avoid: Not listening to feedback, avoiding tough decisions, or failing to support your team.</li>
+  </ul>
+</div>
+{% endblock %}

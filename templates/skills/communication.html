@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="skill-hero card">
+  <div class="icon big">🗣️</div>
+  <div>
+    <h2>Communication</h2>
+    <p class="muted">Express ideas clearly and listen actively.</p>
+  </div>
+  <div class="spacer"></div>
+  <a class="btn primary" href="{{ url_for('quiz', skill_name='communication', serial=serial) }}">Start Quiz</a>
+</div>
+
+<div class="card">
+  <h3>About this skill</h3>
+  <p>Communicate clearly, listen actively, and confirm understanding with summaries and questions.</p>
+  <ul class="bullets">
+    <li>Why it matters in jobs: Good communication prevents misunderstandings and builds strong relationships.</li>
+    <li>How to practice daily: Ask questions, summarize what you hear, and check for understanding.</li>
+    <li>Common mistakes to avoid: Talking without listening, making assumptions, or not clarifying points.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>Educational Lesson: The Art of Effective Communication</h3>
+  <p>Communication is more than just talking; it's about ensuring the message you send is the message that's received. It involves speaking clearly, listening actively, and choosing the right medium for your message.</p>
+
+  <h4>The Three Pillars of Communication:</h4>
+  <ol>
+    <li><strong>Clarity and Conciseness:</strong> Be clear about what you want to say. Avoid jargon and unnecessary complexity. Get to the point quickly and respectfully. A clear message is an effective message.</li>
+    <li><strong>Active Listening:</strong> Communication is a two-way street. Pay full attention to the speaker, show you're engaged, and provide feedback. Paraphrasing what you heard (e.g., "So, if I understand correctly, you're saying...") is a powerful way to confirm understanding.</li>
+    <li><strong>Non-Verbal Cues:</strong> Your body language, tone of voice, and eye contact say just as much as your words. Be mindful of your non-verbal signals and be aware of what others are communicating through theirs.</li>
+  </ol>
+
+  <h4>Practical Scenario:</h4>
+  <p><strong>Problem:</strong> You sent an important email to your team, but a week later, nothing has been done, and everyone seems confused.</p>
+  <ul>
+    <li><strong>Define:</strong> The email was likely unclear or too dense. The communication failed.</li>
+    <li><strong>Generate Solutions:</strong> 1) Send another, longer email with more detail. 2) Call a quick 10-minute meeting to discuss the points. 3) Talk to each person individually.</li>
+    <li><strong>Evaluate:</strong> A quick meeting (Solution 2) is the most efficient way to clarify the message for everyone at once and allow for immediate questions. It respects everyone's time while ensuring alignment.</li>
+    <li><strong>Implement & Reflect:</strong> During the meeting, you discover the team was unsure about the deadline and their specific roles. You clarify these points. The team now understands and can proceed. The reflection is that for complex tasks, a brief conversation is often better than a long email.</li>
+  </ul>
+
+  <h4>Key Takeaway:</h4>
+  <p>Great communication isn't about being the loudest person in the room; it's about being the clearest. Focus on active listening and clarity to build understanding and trust.</p>
+</div>
+{% endblock %}

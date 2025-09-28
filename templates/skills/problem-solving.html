@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="skill-content">
+  <div class="skill-hero card">
+    <div class="icon big">🧩</div>
+    <div>
+      <h2>Problem Solving</h2>
+      <p class="muted">Define the issue, find the cause, try options, and deliver a working fix.</p>
+    </div>
+    <div class="spacer"></div>
+    <a class="btn primary" href="{{ url_for('quiz', skill_name='problem-solving') }}">Take Quiz</a>
+  </div>
+
+<div class="card">
+  <h3>About this skill</h3>
+  <p>Problem solving is a structured way to move from a messy situation to a useful result.
+     It combines clear thinking, creativity, testing, and communication.</p>
+  <ul class="bullets">
+    <li><strong>Why it matters in jobs:</strong> Teams need people who can turn blockers into results without waiting for perfect instructions.</li>
+    <li><strong>Daily practice:</strong> Write the problem in one sentence, list causes, try a small experiment, measure, adjust.</li>
+    <li><strong>Avoid these mistakes:</strong> Jumping to solutions, ignoring data, solving the symptom not the cause, or never measuring the outcome.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>The core steps</h3>
+  <ol class="bullets">
+    <li><strong>Define:</strong> State the problem clearly. What is happening? Who is affected? What is the impact?</li>
+    <li><strong>Measure:</strong> Collect facts (numbers, examples, screenshots, logs). Set a success target.</li>
+    <li><strong>Analyze:</strong> Look for root causes (5 Whys, fishbone). Separate facts from guesses.</li>
+    <li><strong>Ideate:</strong> Generate multiple options. Consider trade-offs: cost, time, risk, quality.</li>
+    <li><strong>Decide & Test:</strong> Choose a promising option. Run a small, low-risk pilot or prototype.</li>
+    <li><strong>Implement:</strong> Apply the solution fully with a simple plan, roles, and timeline.</li>
+    <li><strong>Review:</strong> Did it hit the target? Capture lessons and next steps.</li>
+  </ol>
+</div>
+
+<div class="card">
+  <h3>Useful techniques</h3>
+  <ul class="bullets">
+    <li><strong>5 Whys:</strong> Ask “why?” repeatedly to reach the root cause.</li>
+    <li><strong>Decision Matrix:</strong> Score options against criteria (impact, cost, speed, risk).</li>
+    <li><strong>Pareto 80/20:</strong> Focus on the few causes that create most of the effect.</li>
+    <li><strong>Flowcharting:</strong> Map the current process to spot bottlenecks and rework.</li>
+    <li><strong>Hypothesis → Experiment:</strong> Write “If we do X, we expect Y because Z”, then test.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>Real-world examples</h3>
+  <ul class="bullets">
+    <li><strong>Support:</strong> Ticket backlog grows on Mondays → add weekend FAQ + auto-triage → 35% fewer Monday tickets.</li>
+    <li><strong>Education:</strong> Students miss deadlines → introduce weekly roadmap & reminders → on-time submissions rise.</li>
+    <li><strong>Operations:</strong> Delivery delays at one hub → map process → fix hand-off step → cut delays by 50%.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>Practice now (10 minutes)</h3>
+  <ol class="bullets">
+    <li>Pick a small annoyance you had this week.</li>
+    <li>Write a one-sentence problem statement and a success target.</li>
+    <li>Do a quick 5 Whys to find a likely root cause.</li>
+    <li>List 3 solutions, pick one, and run a mini experiment today.</li>
+    <li>Record the result and one lesson learned.</li>
+  </ol>
+</div>
+
+<div class="card">
+  <h3>Signals employers look for</h3>
+  <ul class="bullets">
+    <li>Clear problem statements and measurable goals.</li>
+    <li>Comfort with data and quick experiments.</li>
+    <li>Explaining trade-offs and reasoning, not just the final answer.</li>
+    <li>Closing the loop: documenting outcomes and preventing repeat issues.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>Common pitfalls & how to fix them</h3>
+  <ul class="bullets">
+    <li><strong>Solution first, facts later:</strong> Pause and gather evidence before acting.</li>
+    <li><strong>Over-engineering:</strong> Prefer the simplest option that meets the goal.</li>
+    <li><strong>No owner:</strong> Assign a clear DRI (directly responsible individual) and deadline.</li>
+    <li><strong>Not measuring:</strong> Define success metrics up front and check them after rollout.</li>
+  </ul>
+</div>
+{% endblock %}

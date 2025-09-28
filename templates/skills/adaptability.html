@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="skill-hero card">
+  <div class="icon big">🌊</div>
+  <div>
+    <h2>Adaptability</h2>
+    <p class="muted">Stay flexible and learn quickly.</p>
+  </div>
+  <div class="spacer"></div>
+  <a class="btn primary" href="{{ url_for('quiz', skill_name='adaptability', serial=serial) }}">Start Quiz</a>
+</div>
+
+<div class="card">
+  <h3>About this skill</h3>
+  <p>Embrace change, learn new tools, and update plans when constraints shift.</p>
+  <ul class="bullets">
+    <li>Why it matters in jobs: Adaptability helps you thrive in changing environments and respond to new challenges.</li>
+    <li>How to practice daily: Try new approaches, accept feedback, and adjust your plans when things change.</li>
+    <li>Common mistakes to avoid: Resisting change, ignoring new information, or sticking to old habits when they no longer work.</li>
+  </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="skill-content">
+  <div class="skill-hero card">
+    <div class="icon big">🧠</div>
+    <div>
+      <h2>Critical Thinking</h2>
+      <p class="muted">Ask better questions, check evidence, and reason clearly before deciding.</p>
+    </div>
+    <div class="spacer"></div>
+    <a class="btn primary" href="{{ url_for('quiz', skill_name='critical-thinking') }}">Take Quiz</a>
+  </div>
+
+  <div class="card">
+    <h3>About this skill</h3>
+    <p>Critical thinking is the disciplined process of questioning assumptions, evaluating evidence,
+       and drawing conclusions that actually follow from the facts.</p>
+    <ul class="bullets">
+      <li><strong>Why it matters in jobs:</strong> It prevents costly mistakes, improves decisions,
+          and helps teams separate signal from noise.</li>
+      <li><strong>Daily practice:</strong> Clarify the claim, list your assumptions, seek disconfirming evidence,
+          and explain your reasoning in plain language.</li>
+      <li><strong>Avoid these mistakes:</strong> Cherry-picking data, trusting first impressions,
+          confusing correlation with causation, or appealing to authority without proof.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>The core steps</h3>
+    <ol class="bullets">
+      <li><strong>Frame the question:</strong> What exactly are we deciding? What would “good” look like?</li>
+      <li><strong>Gather evidence:</strong> Collect relevant data, sources, and examples. Note reliability and limits.</li>
+      <li><strong>Analyze arguments:</strong> Identify claims, reasons, and assumptions. Test logic and relevance.</li>
+      <li><strong>Consider alternatives:</strong> Generate different explanations and look for disconfirming facts.</li>
+      <li><strong>Conclude carefully:</strong> State what the evidence supports—and what it doesn’t.</li>
+      <li><strong>Reflect & iterate:</strong> What would change your mind? What new data should we watch?</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h3>Useful techniques</h3>
+    <ul class="bullets">
+      <li><strong>Claim–Evidence–Reasoning (CER):</strong> Write the claim, list evidence, explain the link.</li>
+      <li><strong>Argument mapping:</strong> Visualize main claim, supporting reasons, and objections.</li>
+      <li><strong>SIFT / CRAAP checks:</strong> Stop, Investigate the source, Find better coverage, Trace to the origin
+          (or check Currency, Relevance, Authority, Accuracy, Purpose).</li>
+      <li><strong>Fallacy spotting:</strong> Watch for ad hominem, straw man, slippery slope, false dilemma, circular reasoning.</li>
+      <li><strong>Base rates & Fermi estimates:</strong> Use rough math and prior probabilities to sanity-check claims.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Real-world examples</h3>
+    <ul class="bullets">
+      <li><strong>Hiring:</strong> A candidate’s reference is glowing, but output metrics are weak → weigh objective results over anecdotes.</li>
+      <li><strong>Marketing:</strong> Signups rise after a new banner → check seasonality and other changes before crediting the banner.</li>
+      <li><strong>Education:</strong> A new app “improves grades” → compare matched cohorts and control for prior performance.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Practice now (10 minutes)</h3>
+    <ol class="bullets">
+      <li>Pick a claim you saw today (news, social, workplace).</li>
+      <li>Write its supporting reasons and what is assumed but unstated.</li>
+      <li>List two pieces of evidence that would <em>contradict</em> the claim.</li>
+      <li>Estimate confidence (0–100%) and one thing that would shift it by 20%.</li>
+      <li>Summarize your conclusion in two sentences for a teammate.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h3>Signals employers look for</h3>
+    <ul class="bullets">
+      <li>Clear questions and precise definitions.</li>
+      <li>Balanced use of data and context, noting limits and uncertainty.</li>
+      <li>Ability to articulate trade-offs and consider counterarguments.</li>
+      <li>Willingness to update views when stronger evidence appears.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Common pitfalls & how to fix them</h3>
+    <ul class="bullets">
+      <li><strong>Confirmation bias:</strong> Proactively search for disconfirming evidence.</li>
+      <li><strong>Overconfidence:</strong> Use ranges and confidence levels; show your assumptions.</li>
+      <li><strong>Authority bias:</strong> Evaluate the argument, not the badge or job title.</li>
+      <li><strong>Post hoc fallacy:</strong> Use experiments or controls to test causation.</li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

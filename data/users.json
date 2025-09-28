@@ -1,0 +1,86 @@
+{
+  "users": [
+    {
+      "username": "admin",
+      "password": "adminpass",
+      "role": "admin",
+      "scanned_skills": []
+    },
+    {
+      "username": "student_1",
+      "password": "student1pass",
+      "role": "student",
+      "scanned_skills": [
+        "SCB-COM-005-GPXB"
+      ],
+      "points": 10,
+      "badges": [],
+      "streak": 1,
+      "last_activity": "2025-09-28",
+      "badges_earned": 0,
+      "skill_progress": {
+        "communication": {
+          "scanned": true,
+          "read": false,
+          "quiz_taken": false
+        },
+        "collaboration": {
+          "scanned": false,
+          "read": false,
+          "quiz_taken": false
+        },
+        "critical-thinking": {
+          "scanned": false,
+          "read": false,
+          "quiz_taken": false
+        },
+        "creativity": {
+          "scanned": false,
+          "read": false,
+          "quiz_taken": false
+        },
+        "problem-solving": {
+          "scanned": false,
+          "read": false,
+          "quiz_taken": false
+        },
+        "adaptability": {
+          "scanned": false,
+          "read": false,
+          "quiz_taken": false
+        },
+        "digital-literacy": {
+          "scanned": false,
+          "read": false,
+          "quiz_taken": false
+        },
+        "initiative": {
+          "scanned": false,
+          "read": false,
+          "quiz_taken": false
+        },
+        "leadership": {
+          "scanned": false,
+          "read": false,
+          "quiz_taken": false
+        },
+        "media-literacy": {
+          "scanned": false,
+          "read": false,
+          "quiz_taken": false
+        }
+      }
+    },
+    {
+      "username": "student_2",
+      "password": "student2pass",
+      "role": "student",
+      "scanned_skills": [],
+      "points": 0,
+      "badges": [],
+      "streak": 0,
+      "last_activity": null,
+      "badges_earned": 0
+    }
+  ]
+}

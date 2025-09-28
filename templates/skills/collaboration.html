@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="skill-hero card">
+  <div class="icon big">🤝</div>
+  <div>
+    <h2>Collaboration</h2>
+    <p class="muted">Work effectively in teams to reach goals.</p>
+  </div>
+  <div class="spacer"></div>
+  <a class="btn primary" href="{{ url_for('quiz', skill_name='collaboration', serial=serial) }}">Start Quiz</a>
+</div>
+
+<div class="card">
+  <h3>About this skill</h3>
+  <p>Work with diverse teammates using shared goals, roles, and respectful feedback cycles.</p>
+  <ul class="bullets">
+    <li>Why it matters in jobs: Collaboration helps teams achieve more together and solve complex problems.</li>
+    <li>How to practice daily: Share ideas, listen to others, and give constructive feedback.</li>
+    <li>Common mistakes to avoid: Not communicating, ignoring team input, or failing to resolve conflicts.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>Educational Lesson: The Synergy of Collaboration</h3>
+  <p>Collaboration is the art and science of working together to achieve a common goal. It's about combining individual strengths to produce a result that is greater than the sum of its parts.</p>
+
+  <h4>The Core Components of Great Collaboration:</h4>
+  <ol>
+    <li><strong>Shared Goals:</strong> Everyone on the team must be aligned on what they are trying to achieve. A clear, shared objective is the north star that guides all actions and decisions.</li>
+    <li><strong>Clear Roles and Responsibilities:</strong> To avoid confusion and duplicated effort, each team member should know exactly what they are responsible for. This clarity allows individuals to take ownership of their part.</li>
+    <li><strong>Open and Respectful Communication:</strong> Team members must feel safe to share ideas, ask questions, and voice concerns. This requires an environment of trust where feedback is given and received constructively.</li>
+    <li><strong>Effective Conflict Resolution:</strong> Disagreements are natural and can even be productive. Great teams don't avoid conflict; they have a process for resolving it respectfully and finding a path forward.</li>
+  </ol>
+
+  <h4>Practical Scenario:</h4>
+  <p><strong>Problem:</strong> Two members of a project team are working on the same feature without realizing it, leading to wasted time and conflicting code.</p>
+  <ul>
+    <li><strong>Define:</strong> The root cause is a lack of clear roles and communication. There is no system for tracking who is doing what.</li>
+    <li><strong>Generate Solutions:</strong> 1) Create a shared task board (like Trello or Asana). 2) Mandate that all work must be "claimed" on the board before starting. 3) Hold a daily check-in to announce what each person is working on.</li>
+    <li><strong>Evaluate:</strong> A shared task board (Solution 1 & 2) provides a persistent, visible source of truth. It's more reliable than a daily meeting alone.</li>
+    <li><strong>Implement & Reflect:</strong> The team adopts a simple Kanban board. The duplication of work stops immediately. The team reflects that this transparency not only prevents rework but also helps them see where they can assist each other.</li>
+  </ul>
+
+  <h4>Key Takeaway:</h4>
+  <p>Collaboration doesn't happen by accident. It requires a deliberate structure of shared goals, clear roles, and open communication to be successful.</p>
+</div>
+{% endblock %}

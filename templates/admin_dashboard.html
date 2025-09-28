@@ -1,0 +1,258 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <h2>Admin Dashboard</h2>
+  <p>Welcome, Admin!</p>
+
+  <h4>Users</h4>
+  <table class="table       const ALLOWED_SKILLS = JSON.parse('{{ skills | map(attribute='code') | list | tojson | safe }}');able-bordered">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Role</th>
+        <th>Scanned Skills</th>
+        <th>Points</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for uname, udata in users.items() %}
+      <tr>
+        <td>{{ uname }}</td>
+        <td>{{ udata.role }}</td>
+        <td>
+          {% if udata.scanned_skills and udata.scanned_skills|length > 0 %}
+            {{ udata.scanned_skills | join(", ") }}
+          {% else %}
+            <span class="text-muted">None</span>
+          {% endif %}
+        </td>
+        <td>
+          {% if udata.role == 'student' %}
+            {{ udata.points }}
+          {% else %}
+            -
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h4>Generate QR Codes</h4>
+  <form method="post" action="{{ url_for('admin_generate') }}">
+    <div class="mb-3">
+      <label for="skill" class="form-label">Skill</label>
+      <select name="skill" id="skill" class="form-select" required>
+        {% for s in skills %}
+          <option value="{{ s.code }}" {% if chosen_skill == s.code %}selected{% endif %}>
+            {{ s.title }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="count" class="form-label">How many?</label>
+      <input type="number" name="count" id="count" class="form-control" value="5" min="1" max="20">
+    </div>
+
+    <div class="mb-3">
+      <label for="prefix" class="form-label">Prefix</label>
+      <input type="text" name="prefix" id="prefix" class="form-control" value="SCB">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Generate</button>
+  </form>
+
+  {% if generated %}
+    <h5 class="mt-4">Generated QR Codes for {{ chosen_skill }}:</h5>
+    <ul class="list-unstyled">
+      {% for g in generated %}
+        <li>
+          <strong>{{ g.serial }}</strong>:
+          <!-- view_url is the user-facing skill page; scan_url is the QR/scan link containing the serial -->
+          <a href="{{ g.view_url }}" target="_blank" rel="noopener">View skill page</a>
+          &nbsp;|&nbsp;
+          <a href="{{ g.scan_url }}" target="_blank" rel="noopener">Scan link (for QR)</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  
+  <hr>
+  <h4>Available Cards</h4>
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;">
+    <button id="export-csv" class="btn small">Export CSV</button>
+    <div class="muted">Click column headers to sort</div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="sortable">Serial</th>
+        <th class="sortable">Skill</th>
+        <th class="sortable">Holder</th>
+        <th class="sortable">Scanned At</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for c in cards %}
+      <tr>
+        <td class="mono">{{ c.id }}</td>
+        <td>{{ c.skill_name }}</td>
+        <td>{% if c.holder %}{{ c.holder }}{% else %}<span class="muted">Available</span>{% endif %}</td>
+        <td>{% if c.scanned_at %}{{ c.scanned_at }}{% else %}-{% endif %}</td>
+        <td>
+          <!-- Open uses view URL without serial -->
+          <a class="btn small" href="{{ url_for('student_skill', skill_name=c.skill_name) }}">Open</a>
+          <!-- Copy button should copy the full scan URL (used in QR encoding) -->
+          <button class="btn small ghost" data-url="{{ url_for('student_skill', skill_name=c.skill_name, serial=c.id, _external=True) }}" onclick="copyText(this.dataset.url)">Copy QR Scan URL</button>
+        </td>
+      </tr>
+      {% else %}
+      <tr><td colspan="5" class="muted">No cards available.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <script>
+    // Export visible table rows to CSV
+    document.getElementById('export-csv').addEventListener('click', function(){
+      const rows = Array.from(document.querySelectorAll('table tbody tr'));
+      const csv = ['Serial,Skill,Holder,Scanned At'].concat(rows.map(r => {
+        const cells = r.querySelectorAll('td');
+        return [cells[0].innerText.trim(), cells[1].innerText.trim(), cells[2].innerText.trim(), cells[3].innerText.trim()].map(s => '"'+s.replace(/"/g,'""')+'"').join(',');
+      })).join('\n');
+      const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'cards.csv'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+
+    // Simple table sort
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('th.sortable').forEach((th, idx) => {
+        th.style.cursor = 'pointer';
+        th.addEventListener('click', () => {
+          const table = th.closest('table');
+          const tbody = table.querySelector('tbody');
+          const rows = Array.from(tbody.querySelectorAll('tr'));
+          const colIndex = Array.from(th.parentNode.children).indexOf(th);
+          const sorted = rows.sort((a,b) => {
+            const A = a.children[colIndex].innerText.trim().toLowerCase();
+            const B = b.children[colIndex].innerText.trim().toLowerCase();
+            return A < B ? -1 : (A > B ? 1 : 0);
+          });
+          // toggle reverse if already sorted
+          if (th.dataset.sorted === 'asc') { sorted.reverse(); th.dataset.sorted = 'desc'; } else { th.dataset.sorted = 'asc'; }
+          tbody.innerHTML = '';
+          sorted.forEach(r => tbody.appendChild(r));
+        });
+      });
+    });
+  </script>
+  <hr>
+  <h4>Scan QR Code</h4>
+  <div id="qr-reader-wrap-admin" style="max-width:420px;margin:0 auto;">
+    <video id="qr-video-admin" style="width:100%;border-radius:12px;box-shadow:0 2px 12px rgba(34,211,238,0.10);background:#181e3a" playsinline></video>
+    <div id="qr-result-admin" class="toast info" style="margin-top:12px;text-align:center;display:none;"></div>
+    <button id="start-qr-btn-admin" class="btn primary" style="width:100%;margin-top:10px;">Start QR Scan</button>
+    <button id="stop-qr-btn-admin" class="btn ghost" style="width:100%;margin-top:8px;display:none;">Stop Scan</button>
+  </div>
+  <script src="/static/js/qr-scanner.umd.min.js"></script>
+  <script src="/static/js/app.js"></script>
+  <script>
+    let qrScannerAdmin, scanningAdmin = false;
+    const videoAdmin = document.getElementById('qr-video-admin');
+    const resultDivAdmin = document.getElementById('qr-result-admin');
+    const ALLOWED_SKILLS = {{ skills | map(attribute='code') | list | tojson | safe }};
+    function showAdminToast(msg, kind='info'){
+      resultDivAdmin.textContent = msg;
+      resultDivAdmin.className = 'toast ' + (kind === 'error' ? 'error' : (kind === 'success' ? 'success' : 'info'));
+      resultDivAdmin.style.display = 'block';
+    }
+    const startBtnAdmin = document.getElementById('start-qr-btn-admin');
+    const stopBtnAdmin = document.getElementById('stop-qr-btn-admin');
+    startBtnAdmin.onclick = function() {
+      if (scanningAdmin) return;
+      qrScannerAdmin = new QrScanner(videoAdmin, result => {
+        // Validate same-origin skill URLs or structured payloads
+        let skillName = null, serial = null;
+        if (result.startsWith('http')) {
+          try {
+            const parsed = new URL(result);
+            if (parsed.origin === window.location.origin) {
+              const parts = parsed.pathname.split('/').filter(Boolean);
+              if (parts[0] === 'skill') {
+                skillName = parts[1] || null;
+                serial = parts[2] || null;
+                if (!skillName || ALLOWED_SKILLS.indexOf(skillName) === -1) {
+                  showAdminToast('Scanned skill is not recognized.', 'error');
+                  qrScannerAdmin.stop(); scanningAdmin = false; startBtnAdmin.style.display = ''; stopBtnAdmin.style.display = 'none'; return;
+                }
+              } else {
+                showAdminToast('This QR code is not for this app.', 'error');
+                qrScannerAdmin.stop(); scanningAdmin = false; startBtnAdmin.style.display = ''; stopBtnAdmin.style.display = 'none'; return;
+              }
+            } else {
+              showAdminToast('External links are not accepted.', 'error');
+              qrScannerAdmin.stop(); scanningAdmin = false; startBtnAdmin.style.display = ''; stopBtnAdmin.style.display = 'none'; return;
+            }
+          } catch (e) {
+            skillName = null; serial = null;
+          }
+        }
+
+        if (!skillName && !serial) {
+          if (result.includes('|')) {
+            [skillName, serial] = result.split('|');
+          } else if (result.includes('-')) {
+            let parts = result.split('-');
+            skillName = parts[0]; serial = parts.slice(1).join('-');
+          } else {
+            showAdminToast('QR payload not understood. Use skill|serial or a /skill URL.', 'error');
+            qrScannerAdmin.stop(); scanningAdmin = false; startBtnAdmin.style.display = ''; stopBtnAdmin.style.display = 'none'; return;
+          }
+          if (ALLOWED_SKILLS.indexOf(skillName) === -1) {
+            showAdminToast('Scanned skill is not recognized.', 'error');
+            qrScannerAdmin.stop(); scanningAdmin = false; startBtnAdmin.style.display = ''; stopBtnAdmin.style.display = 'none'; return;
+          }
+        }
+
+        resultDivAdmin.textContent = 'Scanned QR Code: ' + (skillName ? skillName + ' / ' + (serial||'<no-serial>') : result);
+        resultDivAdmin.style.display = 'block';
+        qrScannerAdmin.stop();
+        scanningAdmin = false;
+        startBtnAdmin.style.display = '';
+        stopBtnAdmin.style.display = 'none';
+      });
+      qrScannerAdmin.start();
+      scanningAdmin = true;
+      startBtnAdmin.style.display = 'none';
+      stopBtnAdmin.style.display = '';
+      resultDivAdmin.style.display = 'none';
+    };
+    stopBtnAdmin.onclick = function() {
+      if (qrScannerAdmin) qrScannerAdmin.stop();
+      scanningAdmin = false;
+      startBtnAdmin.style.display = '';
+      stopBtnAdmin.style.display = 'none';
+    };
+  </script>
+  <script>
+    // Ensure copy buttons work if app.js copyText is available
+    document.querySelectorAll('button[data-url]').forEach(btn => {
+      btn.addEventListener('click', e => {
+        const url = btn.dataset.url;
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(url).then(() => {
+            alert('Copied URL to clipboard');
+          });
+        } else {
+          copyText(url);
+        }
+      });
+    });
+  </script>
+</div>
+{% endblock %}
